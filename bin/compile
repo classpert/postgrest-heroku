@@ -28,6 +28,11 @@ ver_below_6() {
   [[ $POSTGREST_VER == "0."* ]] || \
   [[ $POSTGREST_VER == "5."* ]]
 }
+ver_below_9() {
+  [[ $POSTGREST_VER == "0."* ]] || \
+  [[ $POSTGREST_VER == "8."* ]]
+}
+
 
 export_env_dir() {
   local env_dir=${1:-$ENV_DIR}
@@ -83,7 +88,11 @@ fi
 if ver_below_6; then
   FILE_SUFFIX="ubuntu"
 else
-  FILE_SUFFIX="linux-x64-static"
+  if ver_below_9; then
+    FILE_SUFFIX="linux-x64-static"
+  else
+    FILE_SUFFIX="linux-static-x64"
+  fi
 fi
 
 if [ ! -e $CACHE_DIR/$BIN ]; then
