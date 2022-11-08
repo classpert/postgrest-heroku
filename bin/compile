@@ -29,7 +29,8 @@ ver_below_6() {
   [[ $POSTGREST_VER == "5."* ]]
 }
 ver_below_9() {
-  [[ $POSTGREST_VER == "0."* ]] || \
+  [[ $POSTGREST_VER == "6."* ]] || \
+  [[ $POSTGREST_VER == "7."* ]] || \
   [[ $POSTGREST_VER == "8."* ]]
 }
 
