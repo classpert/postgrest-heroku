@@ -97,6 +97,7 @@ fi
 
 if [ ! -e $CACHE_DIR/$BIN ]; then
   BIN_URL="https://github.com/PostgREST/postgrest/releases/download/v${POSTGREST_VER}/postgrest-${RELEASE_VER}-${FILE_SUFFIX}.tar.xz"
+  echo "Trying $BIN_URL..."
   if curl --output /dev/null --silent --head --fail $BIN_URL; then
     echo "-----> Downloading and caching PostgREST $POSTGREST_VER binary"
     mkdir -p $CACHE_DIR
